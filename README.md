@@ -7,14 +7,14 @@ Digital Experience Score
 
 # Assumptions
 
-- The score is composed. Multiple intermediate scores are computed to obtain the final global score.\
-<br>
-- The engine is implementing non coupled / independant services for computing the intermediate scores (metrics ?)\
-<br>
-- We are able to reverse engineer the business rules from the engine and/or we have a team of functional expert skilled to producing the business rules\
-<br>
-- We only have to migrate from cloud to cloud (java old portal to the new portal) and no need to describe migration from pure on premise to cloud (can't see anything like this in the description)\
-<br>
+- The score is composed. Multiple intermediate scores are computed to obtain the final global score
+
+- The engine is implementing non coupled / independant services for computing the intermediate scores (metrics ?)
+
+- We are able to reverse engineer the business rules from the engine and/or we have a team of functional expert skilled to producing the business rules
+
+- We only have to migrate from cloud to cloud (java old portal to the new portal) and no need to describe migration from pure on premise to cloud (can't see anything like this in the description)
+
 
 
 
@@ -23,18 +23,18 @@ Digital Experience Score
 
 # Migration step proposition
 
-1. Create a new portal that implements a subsets of the global score (MVP) - Rollout it in production. Add on option on existing app : View to see the new portal\
-<br>
-1. Successive deliveries to add other subsets of the global score\
-<br>
-1. When a critical number of subsets if develivered and rolled out, display the global score\
-<br>
-1. Communication to clients : from date XX.XX we will publish our new portal)\
-<br>
-1. Display by default the new portal on existing URL and allow switching to the old one if needed\
-<br>
-1. Communication - Change management to help migrating from on premise to cloud).\
-<br>
+1. Create a new portal that implements a subsets of the global score (MVP) - Rollout it in production. Add on option on existing app : View to see the new portal
+
+2. Successive deliveries to add other subsets of the global score
+
+3. When a critical number of subsets if develivered and rolled out, display the global score
+
+4. Communication to clients : from date XX.XX we will publish our new portal)
+
+5. Display by default the new portal on existing URL and allow switching to the old one if needed
+
+6. Communication - Change management to help migrating from on premise to cloud).
+
 
 
 # Organisation
