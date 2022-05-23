@@ -1,7 +1,29 @@
 Digital Experience Score
 
 
+# Our understanding
+
+- Collectors get user desktop information and stores them in the Engine (clustered nodes / db memory). The portal (monolothic / java) uses the Engine data to compute and display digital experience metrics
+
+- Nexthink needs to improve its service by proviging a global digital experience score
+
+
 # Requirements
+
+## Functional
+
+Compute DEX Score
+
+
+## Non-functional
+
+Cloud native system
+
+Stream scores and data in realtime
+
+Loosely coopled teams
+
+No impact on high-availability of existing systems
 
 
 
@@ -20,38 +42,29 @@ Digital Experience Score
 
 # Solutions
 
-
-# Migration step proposition
-
-1. Create a new portal that implements a subsets of the global score (MVP) - Rollout it in production. Add on option on existing app : View to see the new portal
-
-2. Successive deliveries to add other subsets of the global score
-
-3. When a critical number of subsets if develivered and rolled out, display the global score
-
-4. Communication to clients : from date XX.XX we will publish our new portal)
-
-5. Display by default the new portal on existing URL and allow switching to the old one if needed
-
-6. Communication - Change management to help migrating from on premise to cloud).
-
-
-
 # Organisation
 
-## A frontend team
-- build modern frontend and top UX
-- Solve challenge related to SSE / websockets
+## Frontend
+
+- Build modern frontend with best user experience
+    - Solve challenge related to SSE / websockets
     - Allow the user to activate or no the realtime engine
     - Provide a specific interface for big screens used in data center / call center / war rooms
 
-## A backend team
+## Backend
 
-- Strong business analysis to provide computation rules for metrics and score
-- Strong IA team to do cross functional analysis and create IA models
-- Strong BE dev team to replicate from Engine in memory DB to cloud nosql db (or read directly if direct querying does not affect the engine perf)
-- Strong Backend dev team to build the implement rules for metrics and score
-- Strong Backend dev team to produce data (based on extracts no Mongo - using pythons)
+### Web team
+
+- Business analysts to provide computation rules for metrics and score
+- Backend dev team to implement rules for metrics and score and publish related API
+
+
+### IA team
+- IA data scientits team to do cross functional analysis and create IA models
+- Backend dev team to produce data (based on extracts no Mongo - using pythons)
+
+
+- Backend dev team to replicate from Engine in memory DB to cloud nosql db (or read directly if direct querying does not affect the engine perf)
 
 ## Optional : cross functional teams
 
@@ -59,27 +72,39 @@ Digital Experience Score
 
 - IA team with FE devs + designers / UX / CE + Backend IA devs (python ext
 
-- C'est trop cool
-
-
 
 # Risks and mitigation actions
 
 1. The business rules of the engine (to compute de metrics / score) cannot be retro-engineered and the knowlege is lost
 
     - New team of business analysts - start from scratch
-    - Produce metrics and compare with existing - Iterates until the results are sufficiently close\
-<br>
+    - Produce metrics and compare with existing - Iterates until the results are sufficiently close
 
-1. Querying the engine database has performance impacts (collectors or engine or portal)
+
+2. Querying the engine database has performance impacts (collectors or engine or portal)
 
     - Option 1 : Engine database replications
-    - Option 2 : Double writing of the collectors in the dedicated instances\
-<br>
-1. Due to computation complexity and processing time, we can't ensure realtime responses
+    - Option 2 : Double writing of the collectors in the dedicated instances
 
-    - Choice of computing technology with self managed memory languages without GC (like C++ or Rust)
+3. Due to computation complexity and processing time, we can't ensure realtime responses
 
+    - Use of fast programming platform (self managed memory languages with minimal runtime / GC)
+
+
+
+# Migration step proposition
+
+1. Create a new portal that implements a subsets of the global score (MVP) - Rollout it in production. Add on option on existing app : View to see the new portal
+
+2. Successive deliveries to add other subsets of the global score
+
+3. When a critical number of subsets are develivered and rolled out, display the global score
+
+4. Communication to clients : from date XX.XX we will publish our new portal)
+
+5. Display by default the new portal on existing URL and allow switching to the old one if needed
+
+6. Communication - Change management to help migrating from on premise to cloud).
 
 
 
